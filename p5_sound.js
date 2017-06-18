@@ -62,7 +62,12 @@ function noisa() {
     rotate(a);
     a += astep;
 	while (a > 1000 || a < -1000){
-		a -= 360
+		if a > 1000{
+			a -= 360
+		}
+		else{
+			a += 360
+		}
 	}
 //    console.log(a);
     for (var i = 0; i <= spectrum.length; i+=1) {
