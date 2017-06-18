@@ -13,14 +13,14 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     background(0);
     angleMode(DEGREES);
-    
+
     mic = new p5.AudioIn();
     mic.start();
     amp = new p5.Amplitude();
     fft = new p5.FFT(0.9, 64);
     fft.setInput(mic);
     w = random(100, 400);
-    
+
     // angle
     a = 0;
     astep = random(1)-0.5;
@@ -29,7 +29,7 @@ function setup() {
     rectMode(CENTER);
     strokeAlpha = 255;
     sas = -1;
-    
+
     // color
     strokeB = 255;
     offsetx = 0.2;
@@ -37,7 +37,7 @@ function setup() {
     relocationx = 0;
     relocationy = 0;
     cfill = 255;
-    
+
     noisoIndex = 0;
 }
 
@@ -61,9 +61,9 @@ function noisa() {
     translate(width/2 + noise(offsetx, offsety), height/2 + noise(offsetx, offsety));
     rotate(a);
     a += astep;
-    if (a > 1000 || a < -1000) {
-        astep *= -1;
-    }
+	while (a > 1000 || a < -1000){
+		a -= 360
+	}
 //    console.log(a);
     for (var i = 0; i <= spectrum.length; i+=1) {
         let amp = spectrum[i];
